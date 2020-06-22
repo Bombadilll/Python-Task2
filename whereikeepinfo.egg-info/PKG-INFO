@@ -1,0 +1,14 @@
+Metadata-Version: 1.1
+Name: whereikeepinfo
+Version: 0.0.1
+Summary: whereikeepinfo
+Home-page: http://whereikeep.info
+Author: Alex Gusak
+Author-email:
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Pyramid
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application

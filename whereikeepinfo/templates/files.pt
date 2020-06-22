@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="load: base.pt">
+
+<tal:block metal:fill-slot="content">
+    <h2>
+        Upload File
+    </h2>
+    <form action="/files" method="post" accept-charset="utf-8"
+          enctype="multipart/form-data">
+        <input class="col-sm-8 btn btn-primary" id="uploaded_file" name="uploaded_file" type="file" value="" />
+        <input class="btn btn-default" type="submit" value="submit" />
+    </form>
+    <h2>
+        Files Uploaded
+    </h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Size</th>
+                <th>Uploaded At</th>
+                <th>Shared With</th>
+            </tr>
+        </thead>
+        <tal:block repeat="file uploaded_files">
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="${request.route_url('manage_file', filename=file)}">
+                            ${file}
+                        </a>
+                    </td>
+                    <td>
+                        ${uploaded_files[file]['size']}
+                    </td>
+                    <td>
+                        ${uploaded_files[file]['uploaded_at']}
+                    </td>
+                    <td tal:condition="uploaded_files[file]['shared']">
+                        ${', '.join(uploaded_files[file]['shared'])}
+                    </td>
+                    <td tal:condition="not uploaded_files[file]['shared']">
+                        None
+                    </td>
+                    <td>
+                        <a href="${request.route_url('view_file', filename=file)}">
+                            View
+                        </a>
+                    </td>
+                    <td>
+                        <a href="${request.route_url('delete_file', filename=file)}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </tal:block>
+    </table>
+    <h2>
+        Files Shared With You
+    </h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Size</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
+        <tal:block repeat="file shared_files">
+            <tbody>
+                <tr>
+                    <td>
+                        ${file}
+                    </td>
+                    <td>
+                        ${shared_files[file]['size']}
+                    </td>
+                    <td>
+                        ${shared_files[file]['owner']}
+                    </td>
+                    <td>
+                        <a href="${request.route_url('view_file', filename=file)}">
+                            View
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </tal:block>
+    </table>
+</tal:block>
+</html>

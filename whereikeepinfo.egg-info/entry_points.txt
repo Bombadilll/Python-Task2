@@ -1,0 +1,5 @@
+      [paste.app_factory]
+      main = whereikeepinfo:main
+      [console_scripts]
+      init_whereikeepinfo_db = whereikeepinfo.scripts.initializedb:main
+      

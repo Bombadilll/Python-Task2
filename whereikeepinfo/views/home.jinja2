@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="load: base.pt"
+      lang="en">
+<head>
+    <link rel="shortcut icon" href="../static/images/ooek.png">
+    <title>Forecast OOEK:{{name}}</title>
+    <link href="${request.static_url('whereikeepinfo:static/css/simple-sidebar.css')}" rel="stylesheet">
+</head>
+<style>
+    body{
+    background:url(../static/images/logo.png)no-repeat;
+    background-size: 100%;
+    background-position: top center;
+    background-color: rgba(0,191,255,0.8);
+    }
+
+table {
+    border-collapse: collapse;
+    box-shadow:22px 10px 32px #29292d;
+    margin-bottom:40px;
+    margin-left: 20px;
+    border-radius:16px;
+    border: 0px solid black;
+
+
+
+}
+
+th, td {
+    text-align: left;
+    padding: 33px;
+
+
+}
+
+tr:nth-child(even) {background-color: #FF8000; border-bottom:1px solid black;border-top:1px solid black}
+</style>
+<body>
+<h1> Сервис прогнозирования ТОВ "ООЕК"</h1>
+<!--<img  height="52px" width="52px" src="static/images/logo.png" style="display: block;margin-left:30px;margin-right: auto; margin-top:30px; margin-bottom:30px;">-->
+<br>
+Сервис запущен по адрессу: {{host}}, порт: {{port}}
+<ul>
+  <li > Порядок взаимодействия:</li>
+  <ul>
+  <li><font color="#000000">Нажмите ссылку "Прогноз"-создание прогноза</font> </li>
+      <li><font color="#000000">Нажмите ссылку "Данные"- просмотр  данных(основа прогноза) </font> </li>
+      <li><font color="#000000">Нажмите ссылку "Скачать прогноз"- скачивание файла прогноза</font> </li>
+      <li><font color="#000000">Нажмите ссылку "Граф прогноза"- просмотр и скачивание графа прогноза</font> </li>
+  </ul>
+</ul>
+
+<h1> Панель управления:</h1>
+
+<table style="width: 800px;" >
+
+<tr>
+<td width="60px"><b>dataset</b></td>
+<td width="300px">format= html| json| xml| serialized| csv | excel</td>
+<td width="300px"><a href="http://localhost:6543/run/dataset?dataset=mx&format=excel">Dataset(Данные)</a></td>
+</tr>
+<tr>
+<td><b>forecast</b></td>
+<td>format= html| json| xml| serialized| csv | excel<br>
+    days=20 to 30 </td>
+<td width="300px"><a href="http://localhost:6543/run/forecast?format=html&days=30">Forecast(Прогноз)</a></td>
+</tr>
+<tr>
+<td><b>Charts</b></td>
+<td>format = png | pdf<br>
+     dpi=20 to 300 <br>
+     chart= data | components | forecast <br>
+     days=20 to 30
+
+
+</td>
+<td width="300px"><a href="http://localhost:6543/run/charts?format=jpg&days=130&chart=data&dpi=30">Сharts(Граф прогноза)</a></td>
+</tr>
+
+<tr>
+<td><b>urlencoder</b></td>
+<td>scale=2 to 11<br>
+
+</td>
+<td width="300px"><a href="http://localhost:6543/run/qrbuilder?scale=10">QR code(QR код)</a></td>
+</tr>
+
+
+</table>
+
+
+
+
+
+
+
+</body>
+</html>

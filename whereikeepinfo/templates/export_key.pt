@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="load: base.pt">
+
+<div metal:fill-slot="content">
+    <h1>Please Provide your passphrase to export this key</h1>
+    ${form.begin(request.route_url('export_key', key=key))}
+        <fieldset>
+            ${form.errorlist('passphrase')}
+            ${form.label('passphrase', 'Passphrase:')}
+            ${form.password('passphrase')}
+            ${form.submit('form.submitted', 'export eeeet', class_='name')}
+        </fieldset>
+    ${form.end()}
+</div>
+
+</html>

@@ -1,0 +1,22 @@
+<div metal:use-macro="load: base.pt">
+    <tal:block metal:fill-slot="content">
+       <h1>Account Settings for ${name}</h1>
+       <dl class="dl-horizontal">
+            <dt>Username</dt>
+            <dd>${username}</dd>
+            <dt>Email</dt>
+            <dd>${email}</dd>
+            <dt>Sharability</dt>
+            <dd tal:condition="sharable">Currently Others are not able to share files with you</dd>
+            <dd tal:condition="not sharable">Currently Others are able to share files with you</dd>
+            <dd><a href="${request.route_url('toggle_sharability', userid=username)}">toggle sharability</a></dd>
+            <dt>Account Created At</dt>
+            <dd>${created_at}</dd>
+            <dt>Account Verification</dt>
+            <dd tal:condition="verified">Verified</dd>
+            <dd tal:condition="not verified">Not Verified<a href="${request.route_url('send_verify')}">Send Verification Email</a></dd>
+            <dt>Uploaded File Count</dt>
+            <dd>${filecount}</dd>
+       </dl>
+    </tal:block>
+</div>

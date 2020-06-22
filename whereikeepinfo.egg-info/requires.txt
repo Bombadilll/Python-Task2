@@ -1,0 +1,16 @@
+pyramid
+pyramid_chameleon
+formencode
+pyramid_tm
+SQLAlchemy
+passlib
+itsdangerous
+waitress
+pyramid_jinja2
+pyramid_debugtoolbar
+transaction
+zope.sqlalchemy
+wtforms==2.1
+WTForms-SQLAlchemy
+webhelpers2==2.0
+zope
